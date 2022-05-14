@@ -5,7 +5,7 @@ const db = require('../config/database');
 employee.post('/', async (req,res,next) => {
     const { name, last_name, phone_number, email, address } = req.body;
     if (name && last_name && phone_number && email && address) {
-        let query = "INSERT INTO employee (name, last_name, phone_number, email, address)";
+        let query = "INSERT INTO employee (name, last_name, phone_number, email, address) ";
         query += `VALUES('${name}', '${last_name}', ${phone_number}, '${email}', '${address}')`;
 
         const rows = await db.query(query);
