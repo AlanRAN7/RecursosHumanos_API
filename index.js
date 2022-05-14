@@ -12,11 +12,14 @@ const employee = require('./routes/employee');
 
 
 app.get('/', (req, res) => {
-  res.status(200);
-  res.send('Bienvenido al Servidor');
+  return res.status(200).send({code: 200, message: "Bienvenido al Servidor"});
 });
 
 app.use("/employee", employee);
+
+app.use((req, res, next) =>{
+    return res.status(404).json({code: 404, message: "URL no encontrada"});
+});
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server on port 3000');
