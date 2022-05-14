@@ -21,7 +21,7 @@
   </header>
 
   <main>
-    <button class="btn-add">
+    <button class="btn-add" onclick="openModalAdd()">
       <span class="add-icon"></span>
       Agregar
     </button>
@@ -47,7 +47,7 @@
         <td>elpuvlooo96@gmail.com</td>
         <td>Noria, Heroica Puebla de Zaragoza</td>
         <td class="btn-container">
-          <button class="btn-edit">
+          <button class="btn-edit" onclick="openModalEdit()">
             <span class="edit-icon"></span>
             Editar
           </button>
@@ -67,7 +67,7 @@
         <td>elpuvlooo96@gmail.com</td>
         <td>Noria, Heroica Puebla de Zaragoza</td>
         <td class="btn-container">
-          <button class="btn-edit">
+          <button class="btn-edit" onclick="openModalEdit()">
             <span class="edit-icon"></span>
             Editar
           </button>
@@ -87,7 +87,7 @@
         <td>elpuvlooo96@gmail.com</td>
         <td>Noria, Heroica Puebla de Zaragoza</td>
         <td class="btn-container">
-          <button class="btn-edit">
+          <button class="btn-edit" onclick="openModalEdit()">
             <span class="edit-icon"></span>
             Editar
           </button>
@@ -102,5 +102,56 @@
 
     </table>
   </main>
+
+  <!-- Modal para agregar un nuevo empleado -->
+  <section class="modal-add">
+    <div class="modal-container">
+      <h2 class="modal-title">Agregar Usuario</h2>
+
+      <form action="" class="modal-text">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name">
+        <label for="last_name">Apellido</label>
+        <input type="text" name="last_name" id="last_name">
+        <label for="phone_number">Teléfono</label>
+        <input type="text" name="phone_number" id="phone_number">
+        <label for="email">Correo electrónico</label>
+        <input type="email" name="email" id="email">
+        <label for="address">Dirección</label>
+        <input type="text" name="address" id="address" class="input-large">
+      </form>
+      
+      <div class="modal-btn-container">
+        <a class="modal-btn-close" onclick="closeModalAdd()">Cancelar</a>
+        <a class="modal-btn-add">Agregar</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal para editar un usuario -->
+  <section class="modal-edit">
+    <div class="modal-container">
+      <h2 class="modal-title">Editar Usuario</h2>
+
+      <form action="" class="modal-text">
+        <label for="name">Nombre</label>
+        <input type="text" name="name" id="name">
+        <label for="last_name">Apellido</label>
+        <input type="text" name="last_name" id="last_name">
+        <label for="phone_number">Teléfono</label>
+        <input type="text" name="phone_number" id="phone_number">
+        <label for="email">Correo electrónico</label>
+        <input type="email" name="email" id="email">
+        <label for="address">Dirección</label>
+        <input type="text" name="address" id="address" class="input-large">
+      </form>
+      
+      <div class="modal-btn-container">
+        <a class="modal-btn-close" onclick="modalEditClose()">Cancelar</a>
+        <a class="modal-btn-add">Guardar</a>
+      </div>
+    </div>
+  </section>
+  <script src="../js/main.js"></script>
 </body>
 </html>
