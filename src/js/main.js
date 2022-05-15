@@ -35,39 +35,24 @@ function modalEditClose() {
 
 
 window.onload = init;
-var headers = {"Access-Control-Allow-Origin" : null}
+
+var url = "http://localhost:3000";
 
 function init() {
+  if(localStorage.getItem("token")){
+    headers = {
+      headers:{'Authorization': "Bearer" + localStorage.getItem("token")}
+    }
     document.querySelector('.modal-btn-add').addEventListener('click', register);
     loadEmployees();
-}
 
-function register() {
-    var name = document.getElementById('name').value;
-    var last_name = document.getElementById('last_name').value;
-    var phone_number = document.getElementById('phone_number').value;
-    var email = document.getElementById('email').value;
-    var address = document.getElementById('address').value;
-
-    axios({
-        method: 'post',
-        url: 'http://localhost:3000/employee/insert', 
-        data: {
-            name: name,
-            last_name: last_name,
-            phone_number: phone_number,
-            email: email,
-            address: address 
-        }
-    }).then(function(res){
-        alert("Usuario Registrado Exitosamente");
-    }).cath(function(err){
-        console.log(err);
-    })
+  }else{
+    window.location.href = "login.html"
+  }
 }
 
 function loadEmployees() {
-  axios.get('http://localhost:3000/employee', headers).then(function(res){
+  axios.get(url + '/employee', headers).then(function(res){
     displayEmployees(res.data.message)
 }).catch(function(err){
     console.log(err)
@@ -97,8 +82,29 @@ function displayEmployees(employee){
         </button>
       </td>
     </tr>`
-
-  
   }
 }
 
+function register() {
+  var name = document.getElementById('name').value;
+  var last_name = document.getElementById('last_name').value;
+  var phone_number = document.getElementById('phone_number').value;
+  var email = document.getElementById('email').value;
+  var address = document.getElementById('address').value;
+
+  axios({
+      method: 'post',
+      url: url + '/employee/insert', 
+      data: {
+          name: name,
+          last_name: last_name,
+          phone_number: phone_number,
+          email: email,
+          address: address 
+      }
+  }).then(function(res){
+      alert("Usuario Registrado Exitosamente");
+  }).cath(function(err){
+      console.log(err);
+  })
+}
