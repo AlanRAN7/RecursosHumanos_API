@@ -1,7 +1,7 @@
  //Dependencies
-const express = require('express');
-const morgan = require('morgan');
+const express = require('express');const morgan = require('morgan');
 const app = express();
+
 
 //Routes
 const employee = require('./routes/employee');
@@ -9,22 +9,22 @@ const user = require('./routes/user');
 
 // middleware
 const cors = require('./middleware/cors');
+const auth = require("./middleware/auth")
+const notFound = require("./middleware/notFound")
+const index = require("./middleware/index")
 
 app.use(cors);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  return res.status(200).send({code: 200, message: "Bienvenido al Servidor"});
-});
+app.get('/', index);
 
-app.use('/employee', employee);
 app.use('/user', user);
+app.use(auth); 
+app.use('/employee', employee);
 
-app.use((req, res, next) =>{
-    return res.status(404).json({code: 404, message: "URL no encontrada"});
-});
+app.use(notFound);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('Server on port 3000');
