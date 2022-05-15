@@ -1,15 +1,19 @@
+ //Dependencies
 const express = require('express');
-const app = express();
 const morgan = require('morgan');
-
-// middleware
-app.use(morgan('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
+const app = express();
 
 //Routes
 const employee = require('./routes/employee');
 const user = require('./routes/user');
+
+// middleware
+const cors = require('./middleware/cors');
+
+app.use(cors);
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
   return res.status(200).send({code: 200, message: "Bienvenido al Servidor"});
