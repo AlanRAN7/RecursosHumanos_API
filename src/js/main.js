@@ -35,9 +35,11 @@ function modalEditClose() {
 
 
 window.onload = init;
+var headers = {"Access-Control-Allow-Origin" : null}
 
 function init() {
     document.querySelector('.modal-btn-add').addEventListener('click', register);
+    loadEmployees();
 }
 
 function register() {
@@ -46,9 +48,6 @@ function register() {
     var phone_number = document.getElementById('phone_number').value;
     var email = document.getElementById('email').value;
     var address = document.getElementById('address').value;
-
-
-    console.log(name, last_name, phone_number, email, address);
 
     axios({
         method: 'post',
@@ -61,12 +60,45 @@ function register() {
             address: address 
         }
     }).then(function(res){
-        //Falta redirigir window.location.href='main.html'
-        console.log(res);
         alert("Usuario Registrado Exitosamente");
     }).cath(function(err){
         console.log(err);
-        
     })
-
 }
+
+function loadEmployees() {
+  axios.get('http://localhost:3000/employee', headers).then(function(res){
+    displayEmployees(res.data.message)
+}).catch(function(err){
+    console.log(err)
+  })
+}
+
+
+function displayEmployees(employee){
+  var body = document.querySelector("main")
+  for(var i = 0; i < employee.length; i++){
+      body.innerHTML += `<tr class="data-container">
+      <td>"${employee[i].name}"</td>
+      <td>${employee[i].last_name}</td>
+      <td>${employee[i].phone_number}</td>
+      <td>${employee[i].email}</td>
+      <td>${employee[i].address}</td>
+      <td class="btn-container">
+        <button class="btn-edit" onclick="openModalEdit()">
+          <span class="edit-icon"></span>
+          Editar
+        </button>
+      </td>
+      <td class="btn-container">
+        <button class="btn-delete">
+          <span class="delete-icon"></span>
+          Eliminar
+        </button>
+      </td>
+    </tr>`
+
+  
+  }
+}
+

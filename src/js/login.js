@@ -8,8 +8,6 @@ function login() {
     var mail = document.getElementById('mail').value;
     var password = document.getElementById('password').value;
 
-    console.log(mail, password);
-
     axios({
         method: 'post',
         url: 'http://localhost:3000/user/login', 
@@ -18,12 +16,13 @@ function login() {
             user_password: password
         }
     }).then(function(res){
-        //Falta redirigir window.location.href='main.html'
-        //Falta alerta  alert("Correo u Contraseña incorrectos");
-        console.log(res);
+        if(res.data.code == 200){
+            window.location.href='main.html';
+        }else{
+            alert("Correo u Contraseña incorrectos");
+        }
     }).cath(function(err){
         console.log(err);
-        
     })
 
 }
