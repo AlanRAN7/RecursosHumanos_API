@@ -1,3 +1,4 @@
+window.onload = init;
 
 // Obteniendo los elementos del DOM
 const openAddModal = document.querySelector('.btn-add');
@@ -34,14 +35,14 @@ function modalEditClose() {
 }
 
 
-window.onload = init;
-
+var headers = {}
 var url = "http://localhost:3000";
 
 function init() {
   if(localStorage.getItem("token")){
-    headers = {
-      headers:{'Authorization': "Bearer" + localStorage.getItem("token")}
+        token = localStorage.getItem("token");
+        headers = {
+      headers:{'Authorization': "Bearer " + localStorage.getItem("token")}
     }
     document.querySelector('.modal-btn-add').addEventListener('click', register);
     loadEmployees();
@@ -52,7 +53,8 @@ function init() {
 }
 
 function loadEmployees() {
-  axios.get(url + '/employee', headers).then(function(res){
+  axios.get(url + '/employee', headers)
+  .then(function(res){
     displayEmployees(res.data.message)
 }).catch(function(err){
     console.log(err)
