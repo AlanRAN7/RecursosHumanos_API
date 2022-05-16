@@ -37,7 +37,7 @@ function displayEmployees(employee){
       <td>${employee[i].email}</td>
       <td>${employee[i].address}</td>
       <td class="btn-container">
-        <button class="btn-edit" onclick="openModalEdit()">
+        <button class="btn-edit" onclick="openModalEdit(); passId(${employee[i].id_employee});">
           <span class="edit-icon"></span>
           Editar
         </button>
@@ -50,6 +50,38 @@ function displayEmployees(employee){
       </td>
     </tr>`
   }
+}
+function passId(id_employee){
+  localStorage.setItem("idEmp", id_employee);
+  
+}
+
+function updateInfo(){
+  var name_new = document.getElementById('nameUpdate').value;
+  var last_name_new = document.getElementById('last_nameUpdate').value;
+  var phone_number_new = document.getElementById('phone_numberUpdate').value;
+  var email_new = document.getElementById('emailUpdate').value;
+  var address_new = document.getElementById('addressUpdate').value;
+ 
+  let idEmployee = localStorage.getItem("idEmp");
+
+  localStorage.clear();
+  const res = await axios({
+    method: 'put',
+    url: url + `/employee/${idEmployee}`,
+    data: {
+        name: name_new,
+        last_name: last_name_new,
+        phone_number: phone_number_new,
+        email: email_new,
+        address: address_new
+    }
+}).then(function(res){
+  alert("Usuario Actualizado!");
+  location.reload();
+}).catch(function(err){
+  console.log(err);
+})
 }
 
 function deleteEmployee(id_employee){

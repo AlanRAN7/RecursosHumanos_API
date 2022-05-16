@@ -97,20 +97,20 @@
 
       <form action="" class="modal-text">
         <label for="name">Nombre</label>
-        <input type="text" name="name" id="name">
+        <input type="text" name="name" id="nameUpdate">
         <label for="last_name">Apellido</label>
-        <input type="text" name="last_name" id="last_name">
+        <input type="text" name="last_name" id="last_nameUpdate">
         <label for="phone_number">Teléfono</label>
-        <input type="text" name="phone_number" id="phone_number">
+        <input type="text" name="phone_number" id="phone_numberUpdate">
         <label for="email">Correo electrónico</label>
-        <input type="email" name="email" id="email">
+        <input type="email" name="email" id="emailUpdate">
         <label for="address">Dirección</label>
-        <input type="text" name="address" id="address" class="input-large">
+        <input type="text" name="address" id="addressUpdate" class="input-large">
       </form>
       
       <div class="modal-btn-container">
         <a class="modal-btn-close" onclick="modalEditClose()">Cancelar</a>
-        <a class="modal-btn-add">Guardar</a>
+        <a class="modal-btn-add" onclick = "updateInfo()">Guardar</a>
       </div>
     </div>
   </section>
