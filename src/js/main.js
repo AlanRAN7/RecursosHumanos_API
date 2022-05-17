@@ -66,7 +66,7 @@ function updateInfo(){
   let idEmployee = localStorage.getItem("idEmp");
 
   localStorage.clear();
-  const res = await axios({
+  axios({
     method: 'put',
     url: url + `/employee/${idEmployee}`,
     data: {
