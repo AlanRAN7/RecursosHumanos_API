@@ -77,7 +77,7 @@ function updateInfo(){
         address: address_new
     }
 }).then(function(res){
-  alert("Usuario Actualizado!");
+  alert("Usuario Actualizado!\nRecarga la página para ver el reflejo de los cambios :)");
   location.reload();
 }).catch(function(err){
   console.log(err);
@@ -89,7 +89,7 @@ function deleteEmployee(id_employee){
   // id_employee = parseInt(idUser);
   axios.delete(url + `/employee/${id_employee}`)
   .then(function(res){
-  alert("Usuario eliminado con éxito!")
+  alert("Usuario eliminado con éxito!\nRecarga la página para ver el reflejo de los cambios :)")
   location.reload();
 }).catch(function(err){
   console.log(err);
@@ -114,8 +114,10 @@ function register() {
           address: address 
       }
   }).then(function(res){
-      alert("Empleado Registrado Exitosamente");
-  }).cath(function(err){
+      alert("Empleado Registrado Exitosamente.\nRecarga la página para ver el reflejo de los cambios :)");
+
+
+  }).catch(function(err){
       console.log(err);
   })
 }

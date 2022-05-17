@@ -24,7 +24,7 @@ function login() {
         }else{
             alert("Correo u Contraseña incorrectos");
         }
-    }).cath(function(err){
+    }).catch(function(err){
         console.log(err);
     })
 
