@@ -78,7 +78,6 @@ function updateInfo(){
     }
 }).then(function(res){
   alert("Usuario Actualizado!\nRecarga la página para ver el reflejo de los cambios :)");
-  location.reload();
 }).catch(function(err){
   console.log(err);
 })
@@ -90,7 +89,6 @@ function deleteEmployee(id_employee){
   axios.delete(url + `/employee/${id_employee}`)
   .then(function(res){
   alert("Usuario eliminado con éxito!\nRecarga la página para ver el reflejo de los cambios :)")
-  location.reload();
 }).catch(function(err){
   console.log(err);
 })
