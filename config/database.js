@@ -3,10 +3,10 @@ const util = require ('util');
 
 const pool = mysql.createPool({
     connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'RecursosHumanos'
+    host: 'us-cdbr-east-05.cleardb.net',
+    user: 'b3dc8fd3c7e909',
+    password: '3874b4ea',
+    database: 'heroku_9f8c839918442c4'
 });
 
 pool.query = util.promisify(pool.query);
