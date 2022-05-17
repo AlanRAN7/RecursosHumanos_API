@@ -37,6 +37,7 @@ p{
     background-color: #19D4B5;
     border-color: transparent;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .img-div{
