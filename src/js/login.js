@@ -1,6 +1,6 @@
 window.onload = init;
 
-var url = "https://tallerdenodejs.herokuapp.com/";
+var url = "https://tallerdenodejs.herokuapp.com";
 
 function init() {
     document.querySelector('.btn-submit').addEventListener('click', login);

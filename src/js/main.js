@@ -1,7 +1,7 @@
 window.onload = init;
 
 var headers = {}
-var url = "https://tallerdenodejs.herokuapp.com/";
+var url = "https://tallerdenodejs.herokuapp.com";
 
 function init() {
   if(localStorage.getItem("token")){
